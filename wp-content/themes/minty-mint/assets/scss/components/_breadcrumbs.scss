@@ -1,0 +1,41 @@
+.breadcrumbs {
+  padding: 0 0 15px;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  max-width: 100%;
+  overflow: hidden;
+
+  a, span {
+    font-weight: 300;
+    font-size: adaptive-value(14, 18);
+    line-height: 1.83;
+    color: $c-font-secondary;
+    display: flex;
+    align-items: center;
+    white-space: nowrap;
+  }
+
+  a:after {
+    content: '';
+    display: block;
+    width: 27px;
+    height: 10px;
+    background: url('../images/breadcrumbs-arr.svg') no-repeat center;
+    background-size: contain;
+    margin: 0 5px;
+  }
+  
+  span {
+    text-decoration: underline;
+  }
+
+  a {
+    transition: color .3s ease-in-out;
+
+    @include hover() {
+      color: #ffffff;
+    }
+  }
+
+}

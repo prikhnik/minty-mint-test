@@ -1,0 +1,123 @@
+.post-item {
+
+  background: $c-gradient;
+  display: flex;
+  border-radius: adaptive-value(10, 20);
+  padding: 1px;
+  position: relative;
+
+  @include media('>=tablet') {
+    width: calc(50% - 18px);
+  }
+
+  &__inner {
+    width: 100%;
+    background: $c-bg-primary;
+    border-radius: adaptive-value(10, 20);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: adaptive-value(20, 40) adaptive-value(25, 55) adaptive-value(15, 30);
+  }
+
+  &__img {
+    width: 100%;
+
+    img {
+      max-width: 100%;
+      width: 100%;
+      height: auto;
+    }
+  }
+
+  &__info {
+    padding: adaptive-value(9, 18) 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+
+    span {
+      font-weight: 300;
+      font-size: adaptive-value(14, 18);
+      line-height: 1.5;
+      color: $c-font-secondary;
+    }
+  }
+
+  &__author {
+    display: flex;
+    align-items: center;
+
+    &:before {
+      content: '';
+      width: 15px;
+      height: 19px;
+      display: block;
+      background: url('../images/author.svg') no-repeat center;
+      background-size: contain;
+      margin-right: 11px;
+    }
+  }
+
+  &__ttl {
+    font-weight: 700;
+    font-size: adaptive-value(20, 26);
+    line-height: 1.42;
+    margin-bottom: 10px;
+
+    a {
+      color: inherit;
+      transition: color .3s ease-in-out;
+
+      @include hover() {
+        color: $c-brand-primary;
+      }
+    }
+  }
+
+  &__dsc {
+    font-weight: 300;
+    font-size: adaptive-value(14, 18);
+    line-height: 1.5;
+    margin-bottom: adaptive-value(9, 18);
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+  }
+}
+
+.post-item-tags {
+  display: flex;
+  align-items: center;
+  position: absolute;
+  top: 0;
+  right: adaptive-value(15, 54);
+  gap: adaptive-value(16, 32);
+
+
+
+  &__item {
+    font-weight: 300;
+    font-size: adaptive-value(20, 24);
+    line-height: 1.375;
+    text-align: center;
+    text-transform: lowercase;
+    padding: 0 adaptive-value(18, 28);
+    border-radius: 20px;
+    border: 1px solid #E417A7;
+    min-width: adaptive-value(130, 157);
+    height: adaptive-value(34, 38);
+    transform: translateY(-50%);
+    background: $c-bg-primary;
+  }
+}

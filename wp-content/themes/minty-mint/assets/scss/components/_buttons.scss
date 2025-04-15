@@ -1,0 +1,67 @@
+
+
+.btn-secondary {
+  min-width: adaptive-value(155, 179);
+  height: adaptive-value(50, 55);
+  border-radius: 10px;
+  background-color: $c-brand-primary;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: adaptive-value(16, 18);
+  line-height: 1;
+  text-align: center;
+  color: #ffffff;
+  transition: background-color .3s ease-in-out;
+  cursor: pointer;
+  font-family: $font-primary;
+
+  @include hover() {
+    background-color: darken($c-brand-primary, 15%);
+  }
+}
+
+.btn-primary {
+  padding: 18px 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: adaptive-value(50, 55);
+  background: $c-gradient;
+  border-radius: 10px;
+  position: relative;
+  font-family: $font-primary;
+
+  @include hover() {
+    &:before {
+      background: lighten($c-bg-primary, 5%);
+    }
+  }
+
+  &:before {
+    content: '';
+    width: calc(100% - 2px);
+    height: calc(100% - 2px);
+    display: block;
+    position: absolute;
+    top: 1px;
+    left: 1px;
+    background: $c-bg-primary;
+    border-radius: 10px;
+    transition: background .3s ease-in-out;
+  }
+
+  span {
+    text-align: center;
+    position: relative;
+    z-index: 2;
+    font-weight: 700;
+    font-size: adaptive-value(16, 18);
+    line-height: 1;
+    text-align: center;
+
+  }
+
+}

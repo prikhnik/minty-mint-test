@@ -1,0 +1,30 @@
+.share {
+  display: flex;
+  align-items: center;
+  gap: adaptive-value(14, 25);
+
+  &__ttl {
+    font-weight: 300;
+    font-size: adaptive-value(18, 24);
+    line-height: 1.375;
+  }
+
+  &__item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    @include hover() {
+      svg {
+        fill: $c-brand-primary
+      }
+    }
+
+    svg {
+      width: adaptive-value(34, 42);
+      height: adaptive-value(34, 42);
+      fill: rgba(132, 133, 135, .3);
+      transition: fill .3s ease-in-out;
+    }
+  }
+}

@@ -1,0 +1,9 @@
+.page-wrapper {
+  padding: adaptive-value(35, 61) 0 adaptive-value(30, 68);
+
+  &__inner {
+    @extend .container;
+    position: relative;
+    z-index: 1;
+  }
+}

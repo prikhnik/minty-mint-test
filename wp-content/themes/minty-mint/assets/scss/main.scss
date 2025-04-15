@@ -1,0 +1,35 @@
+@import "vendor/reset";
+@import "vendor/include-media";
+@import "vendor/swiper-bundle.min";
+
+@import "core/fonts";
+@import "core/media-queries-var";
+@import "core/mixins";
+@import "core/functions";
+@import "core/variables";
+
+@import "components/typography";
+@import "components/nav";
+@import "components/socials";
+@import "components/buttons";
+@import "components/breadcrumbs";
+@import "components/post-item";
+@import "components/share";
+@import "components/sidebar";
+@import "components/form";
+
+
+@import "blocks/recent-posts";
+@import "blocks/contact";
+
+@import "layout/layout";
+@import "layout/header";
+@import "layout/footer";
+@import "layout/page";
+
+@import "pages/blog";
+@import "pages/single-post";
+
+
+
+

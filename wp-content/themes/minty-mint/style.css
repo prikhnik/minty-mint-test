@@ -1,0 +1,30 @@
+/*
+Theme Name: Minty-Mint Theme
+Author: Nick Prikhodko
+Description: Custom theme
+Version: 1.0
+License: GNU General Public License v2 or later
+License URI: https://www.gnu.org/licenses/gpl-2.0.html
+*/
+
+
+
+.tag-filter {
+    margin: 20px 0;
+    font-size: 16px;
+}
+
+.tag-filter a {
+    display: inline-block;
+    margin-right: 10px;
+    padding: 5px 10px;
+    background: #eee;
+    text-decoration: none;
+    border-radius: 5px;
+    color: #333;
+}
+
+.tag-filter a.active {
+    background: #333;
+    color: #fff;
+}

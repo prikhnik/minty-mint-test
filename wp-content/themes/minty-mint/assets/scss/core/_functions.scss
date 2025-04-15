@@ -1,0 +1,24 @@
+@function strip-unit($number) {
+    @if type-of($number) == 'number' and not unitless($number) {
+        @return $number / ($number * 0 + 1);
+    }
+
+    @return $number;
+}
+
+@function adaptive-value($min, $max) {
+    $min-abs: abs($min);
+    $max-abs: abs($max);
+
+    $min-rem: $min-abs / 16;
+    $max-rem: $max-abs / 16;
+    $recommended-vw: $max-abs / 1920 * 100;
+
+    @if $min >= 0 and $max >= 0 {
+        @return clamp(#{$min-rem}rem, #{$recommended-vw}vw, #{$max-rem}rem);
+    } @else if $min < 0 and $max < 0 {
+        @return calc(clamp(#{$min-rem}rem, #{$recommended-vw}vw, #{$max-rem}rem) * -1);
+    } @else {
+        @error "Both $min and $max must be either positive or negative!";
+    }
+}

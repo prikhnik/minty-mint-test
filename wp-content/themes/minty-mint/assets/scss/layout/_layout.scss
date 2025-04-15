@@ -1,0 +1,53 @@
+body {
+    background-color: $c-bg-primary;
+    overflow-x: hidden;
+    position: relative;
+
+    &:before {
+        content: '';
+        width: 609px;
+        height: 773px;
+        display: block;
+        background: url('../images/page-gradient-1.png') no-repeat top;
+        background-size: contain;
+        position: absolute;
+        left: 0;
+        top: 0;
+        z-index: 0;
+        max-width: 50%;
+
+
+    }
+
+
+    &.is-modal-open {
+        overflow: hidden;
+        max-height: 100vh;
+    }
+}
+
+.page-wrapper {
+    position: relative;
+
+
+    &:after {
+        content: '';
+        width: 613px;
+        height: 1312px;
+        display: block;
+        background: url('../images/page-gradient-2.png') no-repeat center;
+        background-size: contain;
+        position: absolute;
+        right: 0;
+        bottom: 605px;
+        z-index: -1;
+        max-width: 50%;
+    }
+}
+
+.container {
+    max-width: 1520px;
+    width: 100%;
+    padding: 0 16px;
+    margin: 0 auto;
+}

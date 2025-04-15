@@ -1,0 +1,229 @@
+@mixin decor-line($bottom: -3.425rem) {
+    position: relative;
+
+    &:before {
+        content: '';
+        position: absolute;
+        bottom: $bottom;
+        left: 50%;
+        transform: translateX(-50%) scaleX(0);
+        width: 15rem;
+        height: 1px;
+        background: linear-gradient(to right, rgba($c-font-gray, 0) 0%, rgba($c-font-gray, .7) 50%, rgba($c-font-gray, 0) 100%);
+        z-index: 1;
+        transition: 1.5s 1s;
+
+        @include media('>=tablet') {
+            width: 20rem;
+            background: linear-gradient(to right, rgba($c-font-gray, 0) 0%, rgba($c-font-gray, 1) 50%, rgba($c-font-gray, 0) 100%);
+        }
+
+        @include media('>=desktop') {
+            width: 27.75rem;
+        }
+
+        .section.active & {
+            transform: translateX(-50%) scale(1);
+        }
+    }
+}
+
+@mixin decor-double-line($top: -3.425rem, $bottom: -3.425rem) {
+    position: relative;
+
+    &:after,
+    &:before {
+        content: '';
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 15rem;
+        height: 1px;
+        background: linear-gradient(to right, rgba($c-font-gray, 0) 0%, rgba($c-font-gray, .7) 50%, rgba($c-font-gray, 0) 100%);
+        z-index: 1;
+
+        @include media('>=tablet') {
+            width: 20rem;
+            background: linear-gradient(to right, rgba($c-font-gray, 0) 0%, rgba($c-font-gray, 1) 50%, rgba($c-font-gray, 0) 100%);
+        }
+
+        @include media('>=desktop') {
+            width: 27.75rem;
+        }
+    }
+
+    &:after {
+        bottom: $bottom;
+    }
+
+    &::before {
+        top: $top;
+    }
+}
+
+%title-gradient {
+    background: linear-gradient(to bottom, #727272 20%,#000000 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+
+    &::selection {
+        -webkit-text-fill-color: #fff;
+    }
+}
+
+@mixin hover {
+    @include media('>=desktop-hover') {
+        &:hover {
+            @content;
+        }
+    }
+}
+
+@mixin hover-color($color) {
+   transition: color .5s ease;
+
+    @include hover {
+        color: $color;
+        transition: color .5s ease;
+    }
+}
+
+@mixin hover-fill($color) {
+    transition: fill .5s ease;
+
+    @include hover {
+        fill: $color;
+        transition: fill .5s ease;
+    }
+}
+
+@mixin hover-bg($color) {
+    transition: background-color .5s ease;
+
+    @include hover {
+        background-color: $color;
+        transition: background-color .5s ease;
+    }
+}
+
+@mixin size($width, $height: $width) {
+    width: $width;
+    height: $height;
+}
+
+@function strip-unit($number) {
+    @if type-of($number) == 'number' and not unitless($number) {
+        @return $number / ($number * 0 + 1);
+    }
+
+    @return $number;
+}
+
+@mixin adaptive-font($mobSize, $pcSize: $mobSize, $minScr: $screen-min, $maxScr: $screen-xl) {
+    $addSize: $pcSize - $mobSize;
+    $max-width: $maxScr - $minScr;
+    font-size: calc(#{$mobSize / 16 + rem} + #{$addSize} * ((100vw - #{$minScr}) / #{strip-unit($max-width)}));
+
+    @include media('>=#{$maxScr}') {
+        font-size: #{$pcSize / 16 + rem};
+    }
+}
+
+@mixin img-wrap($bg-color, $wrap-height) {
+    position: relative;
+    display: flex;
+    width: 100%;
+    background-color: $bg-color;
+    overflow: hidden;
+
+    &:before {
+        content: '';
+        display: block;
+        padding-bottom: $wrap-height;
+    }
+}
+
+@mixin text-lines-ellipsis($lines-to-show) {
+    display: -webkit-box;
+    -webkit-line-clamp: $lines-to-show;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+@mixin link-underline($time) {
+    position: relative;
+    display: inline-flex;
+    overflow: hidden;
+
+    &:after {
+        position: absolute;
+        content: '';
+        bottom: 0;
+        left: -1px;
+        @include size(100%, 1px);
+        background-color: currentColor;
+        transform: translate3d(-100%, 0, 0);
+    }
+
+    @include hover {
+        &:after {
+            transform: translate3d(calc(100% + 2px), 0, 0);
+            transition: transform $time ease;
+        }
+    }
+}
+
+@mixin link-double-underline($time: var(--default-transition-time)) {
+    position: relative;
+    display: inline-flex;
+    overflow: hidden;
+    text-decoration: none;
+    margin-top: -2px;
+    margin-bottom: -2px;
+    padding-top: 2px;
+    padding-bottom: 2px;
+
+    &:before,
+    &:after {
+        position: absolute;
+        content: '';
+        bottom: 2px;
+        left: 0;
+        @include size(100%, 1px);
+        background-color: currentColor;
+    }
+
+    &:after {
+        transform: translate3d(-100%, 0, 0);
+    }
+
+    @include hover {
+        &:before {
+            transform: translate3d(100%, 0, 0);
+            transition: transform $time ease;
+        }
+
+        &:after {
+            transform: translate3d(0, 0, 0);
+            transition: transform $time ease .2s;
+        }
+    }
+}
+
+@mixin spacer($wrap-height) {
+    position: relative;
+    width: 100%;
+    pointer-events: none;
+    &:before {
+        content: '';
+        display: block;
+        padding-bottom: $wrap-height;
+    }
+}
+
+//@for $i from 1 through 10 {
+//    &:nth-of-type(#{$i}) {
+//        animation-delay: #{$i * .1}s;
+//    }
+//}

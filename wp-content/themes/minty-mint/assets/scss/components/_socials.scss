@@ -1,0 +1,27 @@
+.socials {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+
+  &__item {
+
+  }
+
+  &__link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    @include hover() {
+      .socials__icon {
+        fill: $c-brand-primary;
+      }
+    }
+  }
+
+  &__icon {
+    fill: #ffffff;
+    transition: fill .3s ease-in-out;
+
+  }
+}

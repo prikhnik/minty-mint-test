@@ -1,0 +1,206 @@
+form {
+  input, label, button {
+    font-family: $font-primary;
+  }
+}
+
+
+.contact-form {
+  max-width: 780px;
+  margin: 0 auto;
+
+  select,
+  textarea,
+  input[autocomplete="country"],
+  input[type="text"],
+  input[type="url"],
+  input[type="number"],
+  input[type="password"],
+  input[type="date"],
+  input[type="email"],
+  input[type="tel"] {
+    min-width: 100%;
+    width: 100%;
+    height: 60px;
+    max-width: 100%;
+    appearance: none;
+    outline: none;
+    box-shadow: none;
+    border: none;
+    border-radius: 10px;
+    background: rgba(243, 243, 243, 0.2);
+    font-family: $font-primary;
+    font-weight: 300;
+    font-size: 20px;
+    line-height: 1.75;
+    color: $c-font-primary;
+    padding: 12px 15px;
+    &:active,
+    &:focus,
+    &:focus-visible {
+
+    }
+    &::placeholder {
+      font-family: inherit;
+      font-size: inherit;
+      line-height: inherit;
+      color: $c-font-secondary;
+    }
+
+    &::-webkit-contacts-auto-fill-button {
+      position: absolute;
+      right: 0;
+      display: none !important;
+      visibility: hidden;
+      pointer-events: none;
+    }
+  }
+
+  input[type="text"],
+  input[type="email"],
+  input[type="tel"] {
+    &:-webkit-autofill,
+    &:-webkit-autofill:hover,
+    &:-webkit-autofill:focus {
+      -webkit-text-fill-color: $c-font-primary;
+      -webkit-box-shadow: 0 0 0 1000px rgba(243, 243, 243, 0.2) inset;
+      outline: 1px solid rgba(243, 243, 243, 0.2);
+      background-color: rgba(243, 243, 243, 0.2);
+    }
+  }
+
+  textarea {
+    height: 100px;
+    resize: none;
+  }
+
+  input[type="submit"] {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    outline: none;
+    box-shadow: none;
+    border: none;
+    border-radius: 0;
+    background-color: transparent;
+    font-family: $font-primary;
+    @include adaptive-font(14, 16);
+    line-height: 1;
+    cursor: pointer;
+  }
+
+  textarea {
+    resize: none;
+  }
+
+  input::-webkit-outer-spin-button,
+  input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
+
+  &__inner {
+    border-radius: 20px;
+    background: #1B64D7;
+    padding: adaptive-value(24, 50) adaptive-value(35, 72) adaptive-value(35, 72);
+    display: flex;
+    flex-direction: column;
+    gap: adaptive-value(14, 25);
+  }
+
+  &__item {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__label {
+    font-weight: 500;
+    font-size: adaptive-value(16, 20);
+    line-height: 1.75;
+  }
+
+  &__input {
+
+  }
+
+  &__check {
+    position: relative;
+    padding-left: 30px;
+    font-size: adaptive-value(10, 12);
+    line-height: 1;
+    color: $c-font-secondary;
+    margin-bottom: 15px;
+
+    input[type="checkbox"] {
+      opacity: 0;
+      visibility: hidden;
+      position: absolute;
+    }
+
+    &:before {
+      content: '';
+      width: 18px;
+      height: 18px;
+      display: block;
+      position: absolute;
+      left: 0;
+      top: 0;
+      background: rgba(255, 255, 255, 0.8);
+      border-radius: 1px;
+      z-index: 1;
+    }
+
+    &:after {
+      content: '';
+      width: 11px;
+      height: 8px;
+      display: block;
+      background: url('../images/check.svg') no-repeat center;
+      background-size: contain;
+      position: absolute;
+      left: 4px;
+      top: 5px;
+      z-index: 2;
+    }
+  }
+
+  &__bottom {
+    display: flex;
+    align-items: center;
+
+    .btn-secondary {
+      height: 60px;
+      min-width: 211px;
+      background-color: #0E3A7E;
+      font-size: adaptive-value(18, 23);
+      margin-right: adaptive-value(24, 48);
+
+    }
+  }
+}
+
+.file-upload {
+
+
+  &__btn {
+    display: flex;
+    align-items: center;
+    background: none;
+    border: none;
+    padding: 0;
+    font-family: $font-primary;
+
+    svg {
+      margin-right: 11px;
+    }
+
+    span {
+      font-size: adaptive-value(16, 18);
+      line-height: 1.5;
+      flex: 1;
+      color: #ffffff;
+    }
+  }
+
+}
